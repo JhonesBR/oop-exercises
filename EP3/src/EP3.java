@@ -20,17 +20,17 @@ public class EP3 {
         System.out.println("✔\n\n");
 
         System.out.printf("Insira um N fora dos limites da memória (>%d): ", V.getSize());
-        int n = sc.nextInt();
-        System.out.printf("Acessando o elemento V[%d][%d]\n", n, n);
+        int N = sc.nextInt();
+        System.out.printf("Acessando o elemento V[%d][%d]\n", N, N);
         try{
-            int element = V.getVMember(n, n);
-            System.out.printf("Elemento V[%d][%d] = %d\n", n, n, V.getVMember(n, n));
+            int element = V.getVMember(N, N);
+            System.out.printf("Elemento V[%d][%d] = %d\n", N, N, V.getVMember(N, N));
             System.out.println("✔\n\n");
         } catch(Exception erro){
             System.out.println("❌");
             System.out.println("\tErro: " + erro);
 
-            V.setSize(n);
+            V.setSize(N);
             System.out.println("\tNovo tamanho da matriz: " + V.getSize());
             System.out.println("Erro tratado ✔\n\n");
         }
