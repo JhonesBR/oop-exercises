@@ -3,15 +3,18 @@
  */
 
 public class PessoaFisica extends Pessoa{
+    // Variables
     private String cpf;
     private String rg;
 
+    // Constructor
     public PessoaFisica(String nome, String telefone, String email, String cpf, String rg) {
         super(nome, telefone, email);
         this.cpf = cpf;
         this.rg = rg;
     }
 
+    // Method print
     public void print() {
         System.out.println("- " + this.nome + " (Pessoa Física)");
         System.out.println("\tTelefone: " + this.telefone);
@@ -20,19 +23,11 @@ public class PessoaFisica extends Pessoa{
         System.out.println("\tRG: " + this.rg);
     }
 
-    public String getCpf() {
-        return cpf;
-    }
+    // Getter and Setter CPF
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
+    // Getter and Setter RG
+    public String getRg() { return rg; }
+    public void setRg(String rg) { this.rg = rg; }
 }

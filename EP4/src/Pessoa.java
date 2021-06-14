@@ -2,11 +2,11 @@
  * @author João Vitor Oliveira de Melo - RA: 175079
  */
 
-public class Pessoa {
+public abstract class Pessoa {
     // Variables
-    String nome;
-    String telefone;
-    String email;
+    protected String nome;
+    protected String telefone;
+    protected String email;
 
     // Constructor
     public Pessoa(String nome, String telefone, String email) {
