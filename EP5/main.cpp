@@ -20,6 +20,7 @@ public:
         std::cout << "\n\n\n\n\n\n\n\n" << std::endl;
         std::cout << "Velocidade: " << this->velocidade << std::endl;
         std::cout << "RPM: " << this->rpm << std::endl;
+        std::cout << "Marcha: " << this->marcha << std::endl;
         std::cout << "Tanque: " << (this->gasolina/this->capacidadeTanque)*100 << "% (" << this->gasolina << "L)" <<std::endl;
         if (this->countProblema > 0){
             std::cout << "Problemas:" << std::endl;
@@ -131,23 +132,29 @@ public:
         if (velocidade >= 0 && velocidade < M[0]){ // Primeira marcha
             pMenor = 0;
             pMaior = M[0];
+            this->marcha = 1;
         } else if (velocidade >= M[0] && velocidade < M[1]){ // Segunda marcha
             pMenor = M[0];
             pMaior = M[1];
+            this->marcha = 2;
         } else if (velocidade >= M[1] && velocidade < M[2]){ // Terceira marcha
             pMenor = M[1];
             pMaior = M[2];
+            this->marcha = 3;
         } else if (velocidade >= M[2] && velocidade < M[3]){ // Quarta marcha
             pMenor = M[2];
             pMaior = M[3];
+            this->marcha = 4;
         } else if (velocidade >= M[3] && velocidade < M[4]){ // Quinta marcha
             pMenor = M[3];
             pMaior = M[4];
+            this->marcha = 5;
         } else if (velocidade >= M[4]){ // Sexta marcha
             pMenor = M[4];
             pMaior = this->velocidadeMaxima;
+            this->marcha = 6;
         }
-        this->rpm = ((1100*(velocidade-pMenor))+(1500*(pMenor-pMaior)))/(pMaior-pMenor);
+        this->rpm = ((1100*(velocidade-pMenor))-(1500*(pMenor-pMaior)))/(pMaior-pMenor);
     }
 
     // Função para inicializar a variavel problemas
@@ -165,6 +172,7 @@ private:
     float capacidadeTanque;
     int rpm = 0;
     int countProblema = 0;
+    int marcha = 0;
 
     // problemas[0] = Sistema de ignicao danificado
     // problemas[1] = ABS danificado
