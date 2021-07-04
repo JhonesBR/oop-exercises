@@ -158,13 +158,6 @@ public:
         problemas[10] = true;
     }
 
-    void showProblemas(){
-        for (int i=0; i<11; i++){
-            std::cout << this->problemas[i] << " ";
-        }
-        std::cout << std::endl;
-    }
-
 private:
     int velocidade = 0;
     int velocidadeMaxima;
@@ -196,7 +189,6 @@ int main() {
     float q;
     while (opc != 7){
         carro.showPainel();
-        carro.showProblemas();
 
         std::cout << "(1) Acelerar  (3) Abastecer     (5) Concertar" << std::endl;
         std::cout << "(2) Freiar    (4) Desabastecer  (6) Quebrar"<< std::endl;
