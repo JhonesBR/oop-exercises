@@ -1,0 +1,3 @@
+"D:\CLion\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\EP5.dir/objects.a
+D:\CodeBlocks\MinGW\bin\ar.exe cr CMakeFiles\EP5.dir/objects.a @CMakeFiles\EP5.dir\objects1.rsp
+D:\CodeBlocks\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\EP5.dir/objects.a -Wl,--no-whole-archive -o EP5.exe -Wl,--out-implib,libEP5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\EP5.dir\linklibs.rsp
