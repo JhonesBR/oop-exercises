@@ -1,5 +1,4 @@
 #include <iostream>
-#include <list>
 
 class Carro{
 public:
@@ -11,11 +10,10 @@ public:
         if (this->gasolina <= 0){
             this->velocidade = 0;
             this->rpm = 0;
-            this->countProblema += 1;
-            this->problemas[10] = true;
-        } else{
-            this->countProblema -= 1;
-            this->problemas[10] = false;
+            if (!this->problemas[10]){
+                this->countProblema += 1;
+                this->problemas[10] = true;
+            }
         }
         std::cout << "\n\n\n\n\n\n\n\n" << std::endl;
         std::cout << "Velocidade: " << this->velocidade << std::endl;
@@ -30,37 +28,37 @@ public:
 
     // Função para listar problemas
     void listarProblemas(){
-        if (this->problemas[10] == true){
+        if (this->problemas[10]){
             std::cout << "\tSem gasolina" << std::endl;
         }
-        if (this->problemas[0] == true){
+        if (this->problemas[0]){
             std::cout << "\tSistema de ignicao danificado" << std::endl;
         }
-        if (this->problemas[1] == true){
+        if (this->problemas[1]){
             std::cout << "\tABS danificado" << std::endl;
         }
-        if (this->problemas[2] == true){
-            std::cout << "\tAirbag não operacional" << std::endl;
+        if (this->problemas[2]){
+            std::cout << "\tAirbag nao operacional" << std::endl;
         }
-        if (this->problemas[3] == true){
+        if (this->problemas[3]){
             std::cout << "\tPneu descalibrado" << std::endl;
         }
-        if (this->problemas[4] == true){
+        if (this->problemas[4]){
             std::cout << "\tOleo do motor em quantidade errada" << std::endl;
         }
-        if (this->problemas[5] == true){
+        if (this->problemas[5]){
             std::cout << "\tBateria danificada" << std::endl;
         }
-        if (this->problemas[6] == true){
+        if (this->problemas[6]){
             std::cout << "\tControle de Cruzeiro Adaptativo nao operacional" << std::endl;
         }
-        if (this->problemas[7] == true){
+        if (this->problemas[7]){
             std::cout << "\tCambio danificado" << std::endl;
         }
-        if (this->problemas[8] == true){
+        if (this->problemas[8]){
             std::cout << "\tCentral eletronica danificada" << std::endl;
         }
-        if (this->problemas[9] == true){
+        if (this->problemas[9]){
             std::cout << "\tDirecao eletrica danificada" << std::endl;
         }
 
@@ -68,8 +66,9 @@ public:
 
     // Função para "gerar problema"
     void quebrar(int n){
+        std::cout << n << std::endl;
         if (n >= 1 && n <= 10){
-            if (this->problemas[n-1] == false){
+            if (!this->problemas[n-1]){
                 this->problemas[n-1] = true;
                 this->countProblema += 1;
             }
@@ -79,7 +78,7 @@ public:
     // Função para "arrumar problema"
     void arrumar(int n){
         if (n >= 1 && n <= 10){
-            if (this->problemas[n-1] == true){
+            if (this->problemas[n-1]){
                 this->problemas[n-1] = false;
                 this->countProblema -= 1;
             }
@@ -104,6 +103,11 @@ public:
 
     // Função para abastecer e desabastecer
     void abastecer(float q){
+        // Manipula o controle de falta de gasolina
+        if (this->gasolina == 0 && this->countProblema-1 > 0 && q > 0){
+            this->countProblema -= 1;
+            this->problemas[10] = false;
+        }
         // O tanque nao ficara menos que vazio
         std::cout << q << std::endl;
         if (this->gasolina + q > 0){
@@ -129,6 +133,7 @@ public:
 
         int velocidade = this->velocidade;
         int pMenor, pMaior;
+        pMenor = pMaior = 0;
         if (velocidade >= 0 && velocidade < M[0]){ // Primeira marcha
             pMenor = 0;
             pMaior = M[0];
@@ -159,10 +164,9 @@ public:
 
     // Função para inicializar a variavel problemas
     void initProblemas(){
-        for (int i=0; i<10; i++){
+        for (int i=0; i<11; i++){
             this->problemas[i] = false;
         }
-        problemas[10] = true;
     }
 
 private:
@@ -176,7 +180,7 @@ private:
 
     // problemas[0] = Sistema de ignicao danificado
     // problemas[1] = ABS danificado
-    // problemas[2] = Airbag não operacional
+    // problemas[2] = Airbag nao operacional
     // problemas[3] = Pneu descalibrado
     // problemas[4] = Oleo do motor em quantidade errada
     // problemas[5] = Bateria danificada
@@ -249,7 +253,6 @@ int main() {
                 std::cin >> opc2;
                 carro.quebrar(opc2);
                 break;
-
         }
     }
     return 0;
