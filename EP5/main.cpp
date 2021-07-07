@@ -16,6 +16,11 @@ public:
                 this->countProblema += 1;
                 this->problemas[10] = true;
             }
+        } else{
+            if (this->problemas[10]){
+                this->countProblema -= 1;
+                this->problemas[10] = false;
+            }
         }
         cout << "\n\n\n\n\n\n\n\n" << endl;
         cout << "Velocidade: " << this->velocidade << endl;
