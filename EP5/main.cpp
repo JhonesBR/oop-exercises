@@ -193,12 +193,17 @@ private:
 };
 
 int main() {
+    // Declarando o objeto
     Carro carro(200, 50);
     carro.initProblemas();
+
+    // Declaração de variáveis
     int opc = -1;
     int opc2 = -1;
     int v;
     float q;
+
+    // Menu
     while (opc != 7){
         carro.showPainel();
 
