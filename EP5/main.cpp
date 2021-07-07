@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 class Carro{
 public:
     // Construtor
@@ -15,13 +17,13 @@ public:
                 this->problemas[10] = true;
             }
         }
-        std::cout << "\n\n\n\n\n\n\n\n" << std::endl;
-        std::cout << "Velocidade: " << this->velocidade << std::endl;
-        std::cout << "RPM: " << this->rpm << std::endl;
-        std::cout << "Marcha: " << this->marcha << std::endl;
-        std::cout << "Tanque: " << (this->gasolina/this->capacidadeTanque)*100 << "% (" << this->gasolina << "L)" <<std::endl;
+        cout << "\n\n\n\n\n\n\n\n" << endl;
+        cout << "Velocidade: " << this->velocidade << endl;
+        cout << "RPM: " << this->rpm << endl;
+        cout << "Marcha: " << this->marcha << endl;
+        cout << "Tanque: " << (this->gasolina/this->capacidadeTanque)*100 << "% (" << this->gasolina << "L)" <<endl;
         if (this->countProblema > 0){
-            std::cout << "Problemas:" << std::endl;
+            cout << "Problemas:" << endl;
             this->listarProblemas();
         }
     }
@@ -29,44 +31,44 @@ public:
     // Função para listar problemas
     void listarProblemas(){
         if (this->problemas[10]){
-            std::cout << "\tSem gasolina" << std::endl;
+            cout << "\tSem gasolina" << endl;
         }
         if (this->problemas[0]){
-            std::cout << "\tSistema de ignicao danificado" << std::endl;
+            cout << "\tSistema de ignicao danificado" << endl;
         }
         if (this->problemas[1]){
-            std::cout << "\tABS danificado" << std::endl;
+            cout << "\tABS danificado" << endl;
         }
         if (this->problemas[2]){
-            std::cout << "\tAirbag nao operacional" << std::endl;
+            cout << "\tAirbag nao operacional" << endl;
         }
         if (this->problemas[3]){
-            std::cout << "\tPneu descalibrado" << std::endl;
+            cout << "\tPneu descalibrado" << endl;
         }
         if (this->problemas[4]){
-            std::cout << "\tOleo do motor em quantidade errada" << std::endl;
+            cout << "\tOleo do motor em quantidade errada" << endl;
         }
         if (this->problemas[5]){
-            std::cout << "\tBateria danificada" << std::endl;
+            cout << "\tBateria danificada" << endl;
         }
         if (this->problemas[6]){
-            std::cout << "\tControle de Cruzeiro Adaptativo nao operacional" << std::endl;
+            cout << "\tControle de Cruzeiro Adaptativo nao operacional" << endl;
         }
         if (this->problemas[7]){
-            std::cout << "\tCambio danificado" << std::endl;
+            cout << "\tCambio danificado" << endl;
         }
         if (this->problemas[8]){
-            std::cout << "\tCentral eletronica danificada" << std::endl;
+            cout << "\tCentral eletronica danificada" << endl;
         }
         if (this->problemas[9]){
-            std::cout << "\tDirecao eletrica danificada" << std::endl;
+            cout << "\tDirecao eletrica danificada" << endl;
         }
 
     }
 
     // Função para "gerar problema"
     void quebrar(int n){
-        std::cout << n << std::endl;
+        cout << n << endl;
         if (n >= 1 && n <= 10){
             if (!this->problemas[n-1]){
                 this->problemas[n-1] = true;
@@ -109,7 +111,7 @@ public:
             this->problemas[10] = false;
         }
         // O tanque nao ficara menos que vazio
-        std::cout << q << std::endl;
+        cout << q << endl;
         if (this->gasolina + q > 0){
             // O tanque nao passara do limite
             if (this->gasolina + q < this->capacidadeTanque){
@@ -207,55 +209,55 @@ int main() {
     while (opc != 7){
         carro.showPainel();
 
-        std::cout << "(1) Acelerar  (3) Abastecer     (5) Concertar" << std::endl;
-        std::cout << "(2) Freiar    (4) Desabastecer  (6) Quebrar"<< std::endl;
-        std::cout << "              (7) Desligar" << std::endl << ">> ";
-        std::cin >> opc;
+        cout << "(1) Acelerar  (3) Abastecer     (5) Concertar" << endl;
+        cout << "(2) Freiar    (4) Desabastecer  (6) Quebrar"<< endl;
+        cout << "              (7) Desligar" << endl << ">> ";
+        cin >> opc;
 
         switch (opc){
             case 1:
-                std::cout << "Insira a velocidade a acelerar em Km/h: " << std::endl;
-                std::cin >> v;
+                cout << "Insira a velocidade a acelerar em Km/h: " << endl;
+                cin >> v;
                 carro.mudarVelocidade(v);
                 break;
 
             case 2:
-                std::cout << "Insira a velocidade a freiar em Km/h: " << std::endl;
-                std::cin >> v;
+                cout << "Insira a velocidade a freiar em Km/h: " << endl;
+                cin >> v;
                 carro.mudarVelocidade(-v);
                 break;
 
             case 3:
-                std::cout << "Insira a quantidade a abastecer em L: " << std::endl;
-                std::cin >> q;
+                cout << "Insira a quantidade a abastecer em L: " << endl;
+                cin >> q;
                 carro.abastecer(q);
                 break;
 
             case 4:
-                std::cout << "Insira a quantidade a desabastecer em L: " << std::endl;
-                std::cin >> q;
+                cout << "Insira a quantidade a desabastecer em L: " << endl;
+                cin >> q;
                 carro.abastecer(-q);
                 break;
 
             case 5:
-                std::cout << "Selecione a opcao para concertar: " << std::endl;
-                std::cout << "(1) Injecao eletronica   (2) ABS" << std::endl;
-                std::cout << "(3) Airbag               (4) Pneu" << std::endl;
-                std::cout << "(5) Oleo do motor        (6) Bateria" << std::endl;
-                std::cout << "(7) Cruzeiro Adaptativo  (8) Cambio" << std::endl;
-                std::cout << "(9) Central eletronica   (10) Direcao" << std::endl << ">> ";
-                std::cin >> opc2;
+                cout << "Selecione a opcao para concertar: " << endl;
+                cout << "(1) Injecao eletronica   (2) ABS" << endl;
+                cout << "(3) Airbag               (4) Pneu" << endl;
+                cout << "(5) Oleo do motor        (6) Bateria" << endl;
+                cout << "(7) Cruzeiro Adaptativo  (8) Cambio" << endl;
+                cout << "(9) Central eletronica   (10) Direcao" << endl << ">> ";
+                cin >> opc2;
                 carro.arrumar(opc2);
                 break;
 
             case 6:
-                std::cout << "Selecione a opcao para quebrar: " << std::endl;
-                std::cout << "(1) Injecao eletronica   (2) ABS" << std::endl;
-                std::cout << "(3) Airbag               (4) Pneu" << std::endl;
-                std::cout << "(5) Oleo do motor        (6) Bateria" << std::endl;
-                std::cout << "(7) Cruzeiro Adaptativo  (8) Cambio" << std::endl;
-                std::cout << "(9) Central eletronica   (10) Direcao" << std::endl << ">> ";
-                std::cin >> opc2;
+                cout << "Selecione a opcao para quebrar: " << endl;
+                cout << "(1) Injecao eletronica   (2) ABS" << endl;
+                cout << "(3) Airbag               (4) Pneu" << endl;
+                cout << "(5) Oleo do motor        (6) Bateria" << endl;
+                cout << "(7) Cruzeiro Adaptativo  (8) Cambio" << endl;
+                cout << "(9) Central eletronica   (10) Direcao" << endl << ">> ";
+                cin >> opc2;
                 carro.quebrar(opc2);
                 break;
         }
